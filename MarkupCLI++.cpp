@@ -13,6 +13,13 @@ int main(int argc, char* argv[]) {
     }
 
     std::ofstream file(argv[1]);
+
+    if (std::string(argv[2]) == "--header") {
+        file << "# " << argv[3] << std::endl;
+    } else if (std::string(argv[2]) == "--text") {
+        file << argv[3] << std::endl;
+    }
+
     file << "# " << argv[2] << std::endl;
     file.close();
 
@@ -20,4 +27,4 @@ int main(int argc, char* argv[]) {
 
     std::cout << "input file: " << argv[1] << std::endl;
     return 0;
-}
+}   
