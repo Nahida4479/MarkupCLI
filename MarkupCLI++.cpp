@@ -1,5 +1,12 @@
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <algorithm>
+
+std::string toLower(std::string text) {
+    std::transform(text.begin(), text.end(), text.begin(), ::tolower);
+    return text;
+}
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
@@ -14,13 +21,16 @@ int main(int argc, char* argv[]) {
 
     std::ofstream file(argv[1]);
 
-    if (std::string(argv[2]) == "--header") {
-        file << "# " << argv[3] << std::endl;
-    } else if (std::string(argv[2]) == "--text") {
-        file << argv[3] << std::endl;
+    for (int i = 2; i < argc - 1; i++) {
+        std::string flag = toLower(argv[i]);
+
+        if (flag == "--header" ) {
+            file << "# " << argv[i + 1] << std::endl;
+        } else if (flag == "--text") {
+            file << argv[i + 1] << std::endl;
+        }
     }
 
-    file << "# " << argv[2] << std::endl;
     file.close();
 
     std::cout << "Saved to " << argv[1] << std::endl;
