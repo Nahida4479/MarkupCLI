@@ -24,11 +24,11 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    for (int i = 2; i < argc - 1; i++) {
+    for (int i = 2; i < argc; i++) {
         std::string flag = toLower(argv[i]);
         if (flag == "--overwrite-file") {
             std::ofstream file(argv[1]);
-        }
+        } 
     }
 
     std::ofstream file(argv[1], std::ios::app);
