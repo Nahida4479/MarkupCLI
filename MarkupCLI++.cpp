@@ -24,7 +24,14 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::ofstream file(argv[1]);
+    for (int i = 2; i < argc - 1; i++) {
+        std::string flag = toLower(argv[i]);
+        if (flag == "--overwrite-file") {
+            std::ofstream file(argv[1]);
+        }
+    }
+
+    std::ofstream file(argv[1], std::ios::app);
 
     for (int i = 2; i < argc - 1; i++) {
         std::string flag = toLower(argv[i]);
@@ -35,6 +42,10 @@ int main(int argc, char* argv[]) {
             file << argv[i + 1] << std::endl;
         } else if (flag == "--note") {
             file << "> [!NOTE]\n> " << argv[i + 1] << std::endl;
+        } else if (flag == "--important") {
+            file << "> [!IMPORTANT]\n> " << argv[i + 1] << std::endl;
+        } else if (flag == "--tip") {
+            file << "> [!TIP]\n> " << argv[i + 1] << std::endl;
         }
     }
 
