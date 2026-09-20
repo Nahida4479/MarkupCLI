@@ -19,6 +19,11 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    if (argc < 4) {
+        std::cout << "Error: Provide the file name and the header content." << std::endl;
+        return 1;
+    }
+
     std::ofstream file(argv[1]);
 
     for (int i = 2; i < argc - 1; i++) {
@@ -28,6 +33,8 @@ int main(int argc, char* argv[]) {
             file << "# " << argv[i + 1] << std::endl;
         } else if (flag == "--text") {
             file << argv[i + 1] << std::endl;
+        } else if (flag == "--note") {
+            file << "> [!NOTE]\n> " << argv[i + 1] << std::endl;
         }
     }
 
