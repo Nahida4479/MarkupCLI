@@ -2,11 +2,7 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
-
-std::string toLower(std::string text) {
-    std::transform(text.begin(), text.end(), text.begin(), ::tolower);
-    return text;
-}
+#include "string_utils.h"
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
