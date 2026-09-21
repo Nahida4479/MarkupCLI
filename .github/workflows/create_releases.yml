@@ -15,10 +15,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Compile (Linux/macOS)
         if: matrix.os != 'windows-latest'
-        run: g++ MarkupCLI++.cpp -o MarkupCLI++-${{ matrix.os }}
+        run: g++ MarkupCLI++.cpp src/string_utils.cpp -o MarkupCLI++-${{ matrix.os }}
       - name: Compile (Windows)
         if: matrix.os == 'windows-latest'
-        run: g++ MarkupCLI++.cpp -o MarkupCLI++-windows.exe
+        run: g++ MarkupCLI++.cpp src/string_utils.cpp -o MarkupCLI++-windows.exe
       - uses: actions/upload-artifact@v4
         with:
           name: build-${{ matrix.os }}
