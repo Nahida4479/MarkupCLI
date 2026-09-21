@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
-#include "string_utils.h"
+#include "src/string_utils.h"
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
