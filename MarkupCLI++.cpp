@@ -39,13 +39,19 @@ int main(int argc, char* argv[]) {
         if (flag == "--header" ) {
             file << "# " << argv[i + 1] << std::endl;
         } else if (flag == "--text") {
-            file << argv[i + 1] << std::endl;
+            file << argv[i + 1] << "\n" << std::endl;
         } else if (flag == "--note") {
-            file << "> [!NOTE]\n> " << argv[i + 1] << std::endl;
+            file << "> [!NOTE]\n> " << argv[i + 1] <<  "\n" << std::endl;
         } else if (flag == "--important") {
-            file << "> [!IMPORTANT]\n> " << argv[i + 1] << std::endl;
+            file << "> [!IMPORTANT]\n> " << argv[i + 1] << "\n" << std::endl;
         } else if (flag == "--tip") {
-            file << "> [!TIP]\n> " << argv[i + 1] << std::endl;
+            file << "> [!TIP]\n> " << argv[i + 1] << "\n" << std::endl;
+        } else if (flag == "--image") {
+            if (i + 2 >= argc) {
+                std::cout << "Error: --image required both a description and a link/path." << std::endl;
+                return 1;
+            }
+            file << "![" << argv[i + 1] << "]" << "(" << argv[i + 2] << ")" << std::endl;
         }
     }
 
