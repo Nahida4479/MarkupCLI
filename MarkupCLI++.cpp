@@ -28,6 +28,10 @@ int main(int argc, char* argv[]) {
     }
 
     std::ofstream file(argv[1], std::ios::app);
+    if (!file.is_open()) {
+        std::cout << "Error: Could not open file for writing (check permissions)." << std::endl;
+        return 1;
+    }
 
     for (int i = 2; i < argc - 1; i++) {
         std::string flag = toLower(argv[i]);
@@ -49,9 +53,18 @@ int main(int argc, char* argv[]) {
         }
         file << "![" << argv[i + 1] << "]" << "(" << argv[i + 2] << ")" << std::endl;
         }
+        else if (flag == "--link")
+        {
+            if (i + 2 >= argc)
+            {
+                std::cout << "Error: --link required both a description and a link/path." << std::endl;
+                return 1;
+            }
+            file << "[" << argv[i + 1] << "]" << "(" << argv[i + 2] << ")" << std::endl;
+        }
         else if (flag == "--warning")
         {
-            file << "> [!WARNING]\n > " << argv[i + 1] << "\n"
+            file << "> [!WARNING]\n >" << argv[i + 1] << "\n"
                  << std::endl;
         }
         else if (flag == "--caution")
