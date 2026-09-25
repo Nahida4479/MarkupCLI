@@ -1,6 +1,20 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <sstream>
+
+std::vector<std::string> splitByComma(std::string text)
+{
+    std::stringstream ss(text);
+    std::string value;
+    std::vector<std::string> values;
+
+    while (std::getline(ss, value, ',')) {
+        values.push_back(value);
+    }
+
+    return values;
+}
 
 int main () {
 
