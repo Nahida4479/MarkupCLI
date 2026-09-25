@@ -46,6 +46,11 @@ int main(int argc, char* argv[]) {
             if (i + 2 >= argc) {
                 std::cout << "Error: --image required both a description and a link/path." << std::endl;
                 return 1;
+            } else if (flag == "--warning") {
+                file << "> [!WARNING]\n>" << argv[i + 1] << "\n" << std::endl;
+            }
+              else if (flag == "--caution") {
+                file << "> [!CAUTION]\n>" << argv[i + 1] << "\n" << std::endl;
             }
             file << "![" << argv[i + 1] << "]" << "(" << argv[i + 2] << ")" << std::endl;
         }
