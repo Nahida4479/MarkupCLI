@@ -30,31 +30,52 @@ int main () {
         }
     } while (!headerInput.empty());
 
-    std::vector<std::vector<std::string>> rows;
-    std::string addAnother;
-
-    do {
-        std::vector<std::string> row;
-
+    std::vector<std::vector<std::string>> colums;
         for (int i = 0; i < headers.size(); i++) {
-            std::cout << "Enter value for '" << headers[i] << "': ";
+            std::cout << "Enter value for '" << headers[i] << "' (comma separated): ";
             std::getline(std::cin, headerInput);
-            row.push_back(headerInput);
+            std::vector<std::string> values = splitByComma(headerInput);
+            colums.push_back(values);
         }
 
-        rows.push_back(row);
-
-        std::cout << "\n--- Curent table ---" << std::endl;
-        for (int r = 0; r < rows.size(); r++) {
-            for (int c = 0; c < rows[r].size(); c++) {
-                std::cout << headers[c] << ": " << rows[r][c] << "  ";
+        std::cout << "\n------ Headers and values ----------\n" << std::endl;
+        for (int c = 0; c < colums.size(); c++) {
+            std::cout << headers[c] << ": ";
+            for (int v = 0; v < colums[c].size(); v++) {
+                std::cout << "[" << colums[c][v] << "] ";
             }
-            std::cout << "\n--------------------" << std::endl;
+            std::cout << std::endl;
         }
 
-        std::cout << "Add another row? (y/n): ";
-        std::getline(std::cin, addAnother);
-    } while (addAnother == "y");
+        int maxRows = 0;
+        for (int c = 0; c < colums.size(); c++) {
+            if (colums[c].size() > maxRows) {
+                maxRows = colums[c].size();
+            }
+        }
+            // std::cout << "\n------ Values ----------\n" << std::endl;
+            // std::cout << "Max rows: " << maxRows << std::endl;
 
-    return 0;
+
+        std::vector<std::vector<std::string>> tableRows;
+        for (int i = 0; i < maxRows; i++) {
+            std::vector<std::string> row;
+
+            for (int c = 0; c < colums.size(); c++) {
+                if (i < colums[c].size()) {
+                    row.push_back(colums[c][i]);
+                } else {
+                    row.push_back("");
+                }
+            }
+            tableRows.push_back(row);
+        }
+
+        for (int c = 0; c < tableRows.size(); c++) {
+                for (int v = 0; v < tableRows[c].size(); v++) {
+                    // std::cout << "[" << tableRows[c][v] << "] "; 
+                }
+                // std::cout << std::endl;
+        }
+        return 0;
 }
