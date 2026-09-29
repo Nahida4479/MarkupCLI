@@ -80,17 +80,31 @@ void buildTable(std::ofstream& file) {
                 // std::cout << std::endl;
         }
 
+        std::vector<int> columnWidth;
+
+        for (int c = 0; c < headers.size(); c++)
+        {
+            int width = headers[c].length();
+            for (int r = 0; r < tableRows.size(); r++)
+            {
+                if (tableRows[r][c].length() > width)
+                {
+                    width = tableRows[r][c].length();
+                }
+            }
+            columnWidth.push_back(width);
+        }
 
         std::cout << "\033[1m\n--- Markdown table ---\033[0m" << std::endl;
 
         for (int i = 0; i < headers.size(); i++) {
-            std::cout << "| \033[1m\033[31m" << headers[i] << "\033[0m\033[0m ";
+            std::cout << "| \033[1m\033[31m" << std::left << std::setw(columnWidth[i]) << headers[i] << "\033[0m\033[0m ";
         }
         std::cout << "|" << std::endl;
 
-        for (int c = 0; c < headers.size(); c++)
-        {
-            std::cout << "| --- ";
+
+        for (int c = 0; c < headers.size(); c++) {
+            std::cout << "| " << std::string(columnWidth[c], '-') << " ";
         }
         std::cout << "|" << std::endl;
 
