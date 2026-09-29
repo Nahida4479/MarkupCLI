@@ -5,7 +5,7 @@ set -e
 OS="$(uname -s)"
 
 case "$OS" in
-    Linux*) PLATFORM="ubuntu-latest" ;;
+    Linux*) PLATFORM="linux-latest" ;;
     Darwin*)    PLATFORM="macos-latest" ;;
     *)
 
@@ -26,6 +26,18 @@ if [ -z "$LATEST_TAG" ]; then
 
 fi 
 
+VERSION_FILE="/usr/local/bin/.markupcli_version"
+
+if [ -f "$VERSION_FILE" ]; then
+    INSTALLED_VERSION=$(cat "$VERSION_FILE")
+    if [ "$INSTALLED_VERSION" == "$LATEST_TAG" ]; then
+    echo "MarkupCLI++ $LATEST_TAG is up to date. Nothing to do."
+    exit 0
+fi
+echo "Updating from $INSTALLED_VERSION to $LATEST_TAG..."
+fi
+
+
 echo "Latest version: $LATEST_TAG"
 
 BINARY_NAME="MarkupCLI++-$PLATFORM"
@@ -33,11 +45,11 @@ DOWNLOAD_URL="https://github.com/$REPO/releases/download/$LATEST_TAG/$BINARY_NAM
 
 echo "Downloading from: $DOWNLOAD_URL"
 
-curl -sSL -o MarkupCLI++ "$DOWNLOAD_URL"
+curl --progress-bar -f -L -o MarkupCLI++ "$DOWNLOAD_URL"
 
 chmod +x MarkupCLI++
 
 sudo mv MarkupCLI++ /usr/local/bin/MarkupCLI++
+echo "$LATEST_TAG" | sudo tee /usr/local/bin/.markupcli_version > /dev/null
 
 echo "MarkupCLI++ $LATEST_TAG installed successfully"
-

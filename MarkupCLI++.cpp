@@ -132,7 +132,7 @@ int main(int argc, char* argv[]) {
                 std::cout << "Error: --image required both a description and a link/path." << std::endl;
                 return 1;
         }
-        file << "![" << argv[i + 1] << "]" << "(" << argv[i + 2] << ")" << std::endl;
+        file << "![" << argv[i + 1] << "]" << "(" << argv[i + 2] << ")\n" << std::endl;
         }
         else if (flag == "--link")
         {
@@ -141,7 +141,7 @@ int main(int argc, char* argv[]) {
                 std::cout << "Error: --link required both a description and a link/path." << std::endl;
                 return 1;
             }
-            file << "[" << argv[i + 1] << "]" << "(" << argv[i + 2] << ")" << std::endl;
+            file << "[" << argv[i + 1] << "]" << "(" << argv[i + 2] << ")\n" << std::endl;
         }
         else if (flag == "--warning") {
             if (i + 1 >= argc)
@@ -149,7 +149,7 @@ int main(int argc, char* argv[]) {
                 std::cout << "Error: --warning requires a value." << std::endl;
                 return 1;
             }
-            file << "> [!WARNING]\n >" << argv[i + 1] << "\n"
+            file << "> [!WARNING]\n> " << argv[i + 1] << "\n"
                  << std::endl;
         }
         else if (flag == "--caution") {
