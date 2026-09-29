@@ -12,15 +12,18 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - name: Compile (Linux/macOS)
-        if: matrix.os != 'windows-latest'
-        run: g++ MarkupCLI++.cpp src/string_utils.cpp src/table_flag.cpp -o MarkupCLI++-${{ matrix.os }}
-      - name: Compile (Windows)
-        if: matrix.os == 'windows-latest'
-        run: g++ MarkupCLI++.cpp src/string_utils.cpp src/table_flag.cpp -o MarkupCLI++-windows.exe
-      - uses: actions/upload-artifact@v4
-        with:
+       - uses: actions/checkout@v4
+       - name: Compile (Linux)
+         if: matrix.os == 'ubuntu-latest'
+         run: g++ MarkupCLI++.cpp src/string_utils.cpp src/table_flag.cpp -o MarkupCLI++-linux-latest
+       - name: Compile (macOS)
+         if: matrix.os == 'macos-latest'
+         run: g++ MarkupCLI++.cpp src/string_utils.cpp src/table_flag.cpp -o MarkupCLI++-macos-latest
+       - name: Compile (Windows)
+         if: matrix.os == 'windows-latest'
+         run: g++ MarkupCLI++.cpp src/string_utils.cpp src/table_flag.cpp -o MarkupCLI++-windows.exe
+       - uses: actions/upload-artifact@v4
+         with:
           name: build-${{ matrix.os }}
           path: MarkupCLI++-*
 

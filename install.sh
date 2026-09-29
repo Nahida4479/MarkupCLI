@@ -28,7 +28,7 @@ fi
 
 echo "Latest version: $LATEST_TAG"
 
-BINARY_NAME="MarkupCLI++-$PLATFORM-latest"
+BINARY_NAME="MarkupCLI++-$PLATFORM"
 DOWNLOAD_URL="https://github.com/$REPO/releases/download/$LATEST_TAG/$BINARY_NAME"
 
 echo "Downloading from: $DOWNLOAD_URL"
