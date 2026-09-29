@@ -35,18 +35,43 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    for (int i = 2; i < argc - 1; i++) {
+    for (int i = 2; i < argc; i++) {
         std::string flag = toLower(argv[i]);
 
         if (flag == "--header" ) {
+            if (i + 1 >= argc)
+            {
+                std::cout << "Error: --header requires a value." << std::endl;
+                return 1;
+            }
             file << "# " << argv[i + 1] << std::endl;
         } else if (flag == "--text") {
+            if (i + 1 >= argc)
+            {
+                std::cout << "Error: --text requires a value." << std::endl;
+                return 1;
+            }
             file << argv[i + 1] << "\n" << std::endl;
         } else if (flag == "--note") {
+            if (i + 1 >= argc)
+            {
+                std::cout << "Error: --note requires a value." << std::endl;
+                return 1;
+            }
             file << "> [!NOTE]\n> " << argv[i + 1] <<  "\n" << std::endl;
         } else if (flag == "--important") {
+            if (i + 1 >= argc)
+            {
+                std::cout << "Error: --important requires a value." << std::endl;
+                return 1;
+            }
             file << "> [!IMPORTANT]\n> " << argv[i + 1] << "\n" << std::endl;
         } else if (flag == "--tip") {
+            if (i + 1 >= argc)
+            {
+                std::cout << "Error: --tip requires a value." << std::endl;
+                return 1;
+            }
             file << "> [!TIP]\n> " << argv[i + 1] << "\n" << std::endl;
         } else if (flag == "--image") {
             if (i + 2 >= argc) {
@@ -64,13 +89,21 @@ int main(int argc, char* argv[]) {
             }
             file << "[" << argv[i + 1] << "]" << "(" << argv[i + 2] << ")" << std::endl;
         }
-        else if (flag == "--warning")
-        {
+        else if (flag == "--warning") {
+            if (i + 1 >= argc)
+            {
+                std::cout << "Error: --warning requires a value." << std::endl;
+                return 1;
+            }
             file << "> [!WARNING]\n >" << argv[i + 1] << "\n"
                  << std::endl;
         }
-        else if (flag == "--caution")
-        {
+        else if (flag == "--caution") {
+            if (i + 1 >= argc)
+            {
+                std::cout << "Error: --caution requires a value." << std::endl;
+                return 1;
+            }
             file << "> [!CAUTION]\n> " << argv[i + 1] << "\n"
                  << std::endl;
         } else if (flag == "--table") {
@@ -83,7 +116,7 @@ int main(int argc, char* argv[]) {
                 std::cout << "Error: --table requires a confirmation value. Please write --table yes" << std::endl;
                 return 1;
             }
-            
+
             buildTable(file);
         }
     }

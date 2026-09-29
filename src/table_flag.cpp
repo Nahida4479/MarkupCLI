@@ -89,7 +89,7 @@ void buildTable(std::ofstream& file) {
 
         for (int c = 0; c < headers.size(); c++)
         {
-            std::cout << "| ---" << std::endl;
+            std::cout << "| --- " << std::endl;
         }
         std::cout << "|" << std::endl;
 
