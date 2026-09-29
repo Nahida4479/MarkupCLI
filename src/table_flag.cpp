@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <iomanip>  
 
 std::vector<std::string> splitByComma(std::string text)
 {
@@ -89,7 +90,7 @@ void buildTable(std::ofstream& file) {
 
         for (int c = 0; c < headers.size(); c++)
         {
-            std::cout << "| --- " << std::endl;
+            std::cout << "| --- ";
         }
         std::cout << "|" << std::endl;
 
@@ -108,14 +109,15 @@ void buildTable(std::ofstream& file) {
         file << "|" << std::endl;
 
         for (int c = 0; c < headers.size(); c++) {
-            file << "| ---";
+            file << "| --- ";
         }
         file << "|" << std::endl;
 
-        for (int r = 0; r = tableRows.size(); r++) {
+        for (int r = 0; r < tableRows.size(); r++) {
             for (int c = 0; c < tableRows[r].size(); c++) {
-                file << "|" << std::endl;
+                file << "| " << tableRows[r][c] << " ";
             }
+            file << "|" << std::endl;
         }
 
         return;
