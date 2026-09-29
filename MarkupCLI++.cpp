@@ -45,35 +45,89 @@ int main(int argc, char* argv[]) {
                 return 1;
             }
             file << "# " << argv[i + 1] << std::endl;
-        } else if (flag == "--text") {
+        } else if (flag == "--header2") {
+            if (i + 1 >= argc)
+            {
+                std::cout << "Error: --header2 requires a value." << std::endl;
+                return 1;
+            }
+            file << "## " << argv[i + 1] << std::endl;
+        }
+        else if (flag == "--header3") {
+            if (i + 1 >= argc)
+            {
+                std::cout << "Error: --header3 requires a value." << std::endl;
+                return 1;
+            }
+            file << "### " << argv[i + 1] << std::endl;
+        }
+        
+        else if (flag == "--header4")
+        {
+            if (i + 1 >= argc)
+            {
+                std::cout << "Error: --header2 requires a value." << std::endl;
+                return 1;
+            }
+            file << "#### " << argv[i + 1] << std::endl;
+        }
+        else if (flag == "--header5")
+        {
+            if (i + 1 >= argc)
+            {
+                std::cout << "Error: --header23 requires a value." << std::endl;
+                return 1;
+            }
+            file << "##### " << argv[i + 1] << std::endl;
+        }
+        else if (flag == "--header6")
+        {
+            if (i + 1 >= argc)
+            {
+                std::cout << "Error: --header23 requires a value." << std::endl;
+                return 1;
+            }
+            file << "###### " << argv[i + 1] << std::endl;
+        }
+
+        else if (flag == "--text")
+        {
             if (i + 1 >= argc)
             {
                 std::cout << "Error: --text requires a value." << std::endl;
                 return 1;
             }
             file << argv[i + 1] << "\n" << std::endl;
-        } else if (flag == "--note") {
+        }
+        else if (flag == "--note")
+        {
             if (i + 1 >= argc)
             {
                 std::cout << "Error: --note requires a value." << std::endl;
                 return 1;
             }
             file << "> [!NOTE]\n> " << argv[i + 1] <<  "\n" << std::endl;
-        } else if (flag == "--important") {
+        }
+        else if (flag == "--important")
+        {
             if (i + 1 >= argc)
             {
                 std::cout << "Error: --important requires a value." << std::endl;
                 return 1;
             }
             file << "> [!IMPORTANT]\n> " << argv[i + 1] << "\n" << std::endl;
-        } else if (flag == "--tip") {
+        }
+        else if (flag == "--tip")
+        {
             if (i + 1 >= argc)
             {
                 std::cout << "Error: --tip requires a value." << std::endl;
                 return 1;
             }
             file << "> [!TIP]\n> " << argv[i + 1] << "\n" << std::endl;
-        } else if (flag == "--image") {
+        }
+        else if (flag == "--image")
+        {
             if (i + 2 >= argc) {
                 std::cout << "Error: --image required both a description and a link/path." << std::endl;
                 return 1;
@@ -119,7 +173,7 @@ int main(int argc, char* argv[]) {
 
             buildTable(file);
         }
-    }
+        }
 
     file.close();
 
