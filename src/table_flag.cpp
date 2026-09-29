@@ -110,7 +110,7 @@ void buildTable(std::ofstream& file) {
 
         for (int r = 0; r < tableRows.size(); r++) {
             for (int c = 0; c < tableRows[r].size(); c++) {
-                std::cout << "|\033[33m " << tableRows[r][c] << "\033[0m ";
+                std::cout << "|\033[33m " << std::left << std::setw(columnWidth[c]) << tableRows[r][c] << "\033[0m ";
             }
             std::cout << "|" << std::endl;
         }
