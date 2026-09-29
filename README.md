@@ -26,14 +26,11 @@ MarkupCLI++ file_name.md --text 123
 .\MarkupCLI++ file_name.md --text 123
 ```
 
-### Example command
-```bash
-MarkupCLI++ file.md --header Hello --text Hello world
-```
-
-### A command containing all the flags
 > [!WARNING]
 > On Windows, use `.\MarkupCLI++`.
+
+
+### A command containing all the flags
 
 ```bash
 MarkupCLI++ file.md --header Hello --header2 hello2 --header3 hello3 --header4 hello4 --header5 hello5 --text hi --header6 hello6 --text Hello world --note Hi --important Important information --tip install MarkupCLI++  --image photo https://cdn.hackclub.com/01a06e42-3b6f-7248-b3f9-b82a2612d31e/nevai-logo-512.png --link NevAI https://cdn.hackclub.com/01a06e42-3b6f-7248-b3f9-b82a2612d31e/nevai-logo-512.png --warning Warning --caution Caution --table yes --overwrite-file
