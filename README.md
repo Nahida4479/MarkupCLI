@@ -3,7 +3,7 @@ A C++ project that allows for easy creation of *Markdown files* using a CLI, for
 
 ## Install 
 
-**Linux**
+**Linux and macOS**
 ```
 curl -sSL https://raw.githubusercontent.com/Nahida4479/MarkupCLI/main/install.sh | bash
 ```
@@ -64,5 +64,5 @@ cd MarkupCLI
 make
 ```
 > [!NOTE] 
-> `make` builds a Linux and macOS binary only. For Windows and macOS, download a pre-built binary from [Releases](https://github.com/Nahida4479/MarkupCLI/releases).
+> `make` builds a Linux and macOS binary only. For Windows, download a pre-built binary from [Releases](https://github.com/Nahida4479/MarkupCLI/releases).
 
