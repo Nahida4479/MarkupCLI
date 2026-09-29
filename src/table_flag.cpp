@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <fstream>
 
 std::vector<std::string> splitByComma(std::string text)
 {
@@ -16,7 +17,7 @@ std::vector<std::string> splitByComma(std::string text)
     return values;
 }
 
-int main () {
+void buildTable(std::ofstream& file) {
 
     std::vector <std::string> headers;
     std::string headerInput;
@@ -86,6 +87,11 @@ int main () {
         }
         std::cout << "|" << std::endl;
 
+        for (int c = 0; c < headers.size(); c++)
+        {
+            std::cout << "| ---" << std::endl;
+        }
+        std::cout << "|" << std::endl;
 
         for (int r = 0; r < tableRows.size(); r++) {
             for (int c = 0; c < tableRows[r].size(); c++) {
@@ -94,5 +100,23 @@ int main () {
             std::cout << "|" << std::endl;
         }
 
-        return 0;
+        file << "\n";
+
+        for (int i = 0; i < headers.size(); i++) {
+            file << "| " << headers[i] << " ";
+        }
+        file << "|" << std::endl;
+
+        for (int c = 0; c < headers.size(); c++) {
+            file << "| ---";
+        }
+        file << "|" << std::endl;
+
+        for (int r = 0; r = tableRows.size(); r++) {
+            for (int c = 0; c < tableRows[r].size(); c++) {
+                file << "|" << std::endl;
+            }
+        }
+
+        return;
 }

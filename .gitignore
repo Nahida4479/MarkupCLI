@@ -3,3 +3,4 @@ plik.md
 MarkupCLI++
 MarkupCLI++.o
 string_utils.o
+table_flag.o
