@@ -3,12 +3,16 @@ A C++ project that allows for easy creation of *Markdown files* using a CLI, for
 
 ## Flags
 ```bash
---header
+--header (from header2 to header6)
 --text
 --note
 --important
 --tip
 --image
+--link
+--warning
+--caution
+--table
 ```
 
 ## How to build?
