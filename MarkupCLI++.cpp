@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include "src/string_utils.h"
+#include "src/table_flag.h"
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
@@ -26,6 +27,7 @@ int main(int argc, char* argv[]) {
             std::ofstream file(argv[1]);
         } 
     }
+
 
     std::ofstream file(argv[1], std::ios::app);
     if (!file.is_open()) {
@@ -71,6 +73,18 @@ int main(int argc, char* argv[]) {
         {
             file << "> [!CAUTION]\n> " << argv[i + 1] << "\n"
                  << std::endl;
+        } else if (flag == "--table") {
+            if (i + 1 >= argc) {
+                std::cout << "Error: --table requires a confirmation value. Please write --table yes" << std::endl;
+                return 1;
+            }
+            std::string confirmation = toLower(argv[i + 1]);
+            if (confirmation != "yes") {
+                std::cout << "Error: --table requires a confirmation value. Please write --table yes" << std::endl;
+                return 1;
+            }
+            
+            buildTable(file);
         }
     }
 

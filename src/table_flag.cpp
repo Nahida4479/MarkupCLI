@@ -38,13 +38,13 @@ int main () {
             colums.push_back(values);
         }
 
-        std::cout << "\n------ Headers and values ----------\n" << std::endl;
+        // std::cout << "\n------ Headers and values ----------\n" << std::endl;
         for (int c = 0; c < colums.size(); c++) {
-            std::cout << headers[c] << ": ";
+            // std::cout << headers[c] << ": ";
             for (int v = 0; v < colums[c].size(); v++) {
-                std::cout << "[" << colums[c][v] << "] ";
+                // std::cout << "[" << colums[c][v] << "] ";
             }
-            std::cout << std::endl;
+            // std::cout << std::endl;
         }
 
         int maxRows = 0;
@@ -77,5 +77,22 @@ int main () {
                 }
                 // std::cout << std::endl;
         }
+
+
+        std::cout << "\033[1m\n--- Markdown table ---\033[0m" << std::endl;
+
+        for (int i = 0; i < headers.size(); i++) {
+            std::cout << "| \033[1m\033[31m" << headers[i] << "\033[0m\033[0m ";
+        }
+        std::cout << "|" << std::endl;
+
+
+        for (int r = 0; r < tableRows.size(); r++) {
+            for (int c = 0; c < tableRows[r].size(); c++) {
+                std::cout << "|\033[33m " << tableRows[r][c] << "\033[0m ";
+            }
+            std::cout << "|" << std::endl;
+        }
+
         return 0;
 }
