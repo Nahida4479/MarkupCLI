@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
         {
             if (i + 1 >= argc)
             {
-                std::cout << "Error: --header2 requires a value." << std::endl;
+                std::cout << "Error: --header4 requires a value." << std::endl;
                 return 1;
             }
             file << "#### " << argv[i + 1] << std::endl;
@@ -75,7 +75,7 @@ int main(int argc, char* argv[]) {
         {
             if (i + 1 >= argc)
             {
-                std::cout << "Error: --header23 requires a value." << std::endl;
+                std::cout << "Error: --header5 requires a value." << std::endl;
                 return 1;
             }
             file << "##### " << argv[i + 1] << std::endl;
@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
         {
             if (i + 1 >= argc)
             {
-                std::cout << "Error: --header23 requires a value." << std::endl;
+                std::cout << "Error: --header6 requires a value." << std::endl;
                 return 1;
             }
             file << "###### " << argv[i + 1] << std::endl;
