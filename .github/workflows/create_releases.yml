@@ -21,7 +21,7 @@ jobs:
          run: g++ MarkupCLI++.cpp src/string_utils.cpp src/table_flag.cpp -o MarkupCLI++-macos-latest
        - name: Compile (Windows)
          if: matrix.os == 'windows-latest'
-         run: g++ MarkupCLI++.cpp src/string_utils.cpp src/table_flag.cpp -o MarkupCLI++-windows.exe
+         run: g++ MarkupCLI++.cpp src/string_utils.cpp src/table_flag.cpp -static -o MarkupCLI++-windows.exe
        - uses: actions/upload-artifact@v4
          with:
           name: build-${{ matrix.os }}
